@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "description": "Command line tool for Trek's application",
   "main": "index.js",
+  "bin": {
+    "trek": "./bin/trek"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,5 +22,11 @@
     "trek-app-kit"
   ],
   "author": "Fangdun Cai <cfddream@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "abbrev": "^1.0.5",
+    "chalk": "^0.5.1",
+    "commander": "^2.6.0",
+    "win-fork": "^1.1.1"
+  }
 }

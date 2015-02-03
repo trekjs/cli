@@ -1,0 +1,132 @@
+#!/usr/bin/env node
+
+'use strict'
+
+var path = require('path')
+  , spawn = require('win-fork')
+  , fs = require('fs')
+  , join = path.join
+  , resolve = path.resolve
+  , stat = fs.statSync
+  , exists = fs.existsSync
+  , abbrev = require('abbrev')
+  , program = require('commander')
+  , chalk = require('chalk')
+  , pkg = require(path.join(__dirname, '../package'))
+
+  , commandCache = {}
+  , cmdList = [
+      {
+          name: 'generate'
+        , alias: 'g'
+        , description: 'Generate new code'
+      },
+      {
+          name: 'new'
+        , alias: 'n'
+        , description: 'Create a new Trek application.'
+      },
+      {
+          name: 'server'
+        , alias: 's'
+        , description: 'Start the Trek server'
+      },
+      {
+          name: 'console'
+        , alias: 'c'
+        , description: 'Start the Trek console'
+      }
+    ]
+  , aliasNames = cmdList
+      .filter(function (c) { return !!c.alias })
+      .map(function (c) { return c.alias })
+  , fullList = cmdList
+      .map(function (c) { return c.name })
+      .concat(aliasNames)
+  , abbrevs = abbrev(fullList)
+
+program.name('trek')
+program
+  .version(pkg.version)
+  .description(chalk.green(pkg.description))
+  .usage('<command> [options]')
+
+program.on('--help', function () {
+  console.log('  Commands:')
+  console.log()
+  cmdList.forEach(function (c) {
+    console.log(chalk.bold.blue('    ' + pad(c.name, 24)) + (c.description || ''))
+  })
+  console.log()
+  process.exit()
+})
+
+program.parse(process.argv)
+
+// args void of cmd
+
+var args = process.argv.slice(3)
+
+// command
+
+var cmd = program.args[0]
+
+// display help
+
+if (!cmd) program.help()
+
+// alias
+
+cmd = deref(cmd) || cmd
+
+// executable
+
+var bin = 'trek-' + cmd
+
+// local or resolve to absolute executable path
+
+var local = join(__dirname, bin)
+
+if (exists(local)) {
+  bin = local
+} else {
+  bin = process.env.PATH
+    .split(path.delimiter)
+    .reduce(function (binary, p)  {
+      p = resolve(p, bin)
+      return exists(p) && stat(p).isFile() ? p : binary
+    }, bin)
+}
+
+// display help if bin does not exist
+
+if (!exists(bin)) {
+  console.error('\n  %s(1) does not exist', chalk.bold.red(bin))
+  program.help()
+}
+
+// spawn
+
+var proc = spawn(bin, args, { stdio: 'inherit', customFds: [0, 1, 2] })
+
+proc.on('close', function (code) {
+  process.exit(code)
+})
+
+function pad (str, width) {
+  var len = Math.max(0, width - str.length)
+  return str + Array(len + 1).join(' ')
+}
+
+function deref (c) {
+  if (!c) return ''
+  if (c.match(/[A-Z]/)) c = c.replace(/([A-Z])/g, function (m) {
+    return "-" + m.toLowerCase()
+  })
+  var a = abbrevs[c]
+  var cmd = cmdList.filter(function (c) {
+    return c.alias === a
+  })[0]
+  if (cmd) a = cmd.name
+  return a
+}
