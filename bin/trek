@@ -12,8 +12,12 @@ var path = require('path')
   , abbrev = require('abbrev')
   , program = require('commander')
   , chalk = require('chalk')
+  , utils = require('../lib/utils')
+  , pad = utils.pad
+  , deref = utils.deref
   , pkg = require(path.join(__dirname, '../package'))
 
+  , title = process.title = 'trek'
   , cmdList = require('./commands')
   , aliasNames = cmdList
       .filter(function (c) { return !!c.alias })
@@ -23,7 +27,6 @@ var path = require('path')
       .concat(aliasNames)
   , abbrevs = abbrev(fullList)
 
-program.name('trek')
 program
   .version(pkg.version)
   .description(chalk.green(pkg.description))
@@ -55,11 +58,11 @@ if (!cmd) program.help()
 
 // alias
 
-cmd = deref(cmd) || cmd
+cmd = deref(cmd, abbrevs, cmdList) || cmd
 
 // executable
 
-var bin = 'trek-' + cmd
+var bin = title + '-' + cmd
 
 // local or resolve to absolute executable path
 
@@ -90,21 +93,3 @@ var proc = spawn(bin, args, { stdio: 'inherit', customFds: [0, 1, 2] })
 proc.on('close', function (code) {
   process.exit(code)
 })
-
-function pad (str, width) {
-  var len = Math.max(0, width - str.length)
-  return str + Array(len + 1).join(' ')
-}
-
-function deref (c) {
-  if (!c) return ''
-  if (c.match(/[A-Z]/)) c = c.replace(/([A-Z])/g, function (m) {
-    return "-" + m.toLowerCase()
-  })
-  var a = abbrevs[c]
-  var cmd = cmdList.filter(function (c) {
-    return c.alias === a
-  })[0]
-  if (cmd) a = cmd.name
-  return a
-}
