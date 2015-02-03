@@ -14,29 +14,7 @@ var path = require('path')
   , chalk = require('chalk')
   , pkg = require(path.join(__dirname, '../package'))
 
-  , commandCache = {}
-  , cmdList = [
-      {
-          name: 'generate'
-        , alias: 'g'
-        , description: 'Generate new code'
-      },
-      {
-          name: 'new'
-        , alias: 'n'
-        , description: 'Create a new Trek application.'
-      },
-      {
-          name: 'server'
-        , alias: 's'
-        , description: 'Start the Trek server'
-      },
-      {
-          name: 'console'
-        , alias: 'c'
-        , description: 'Start the Trek console'
-      }
-    ]
+  , cmdList = require('./commands')
   , aliasNames = cmdList
       .filter(function (c) { return !!c.alias })
       .map(function (c) { return c.alias })

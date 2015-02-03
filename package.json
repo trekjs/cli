@@ -4,7 +4,8 @@
   "description": "Command line tool for Trek's application",
   "main": "index.js",
   "bin": {
-    "trek": "./bin/trek"
+    "trek": "./bin/trek",
+    "trek-generate": "./bin/trek-generate"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
