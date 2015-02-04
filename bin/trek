@@ -39,6 +39,10 @@ program.on('--help', function () {
     console.log(chalk.bold.blue('    ' + pad(c.name, 24)) + (c.description || ''))
   })
   console.log()
+  // http://the.sunnyspot.org/asciiart/gallery/startrek.html
+  console.log(chalk.bold.green(fs.readFileSync(__dirname + '/trek.txt', 'utf8')))
+  console.log()
+
   process.exit()
 })
 
