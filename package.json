@@ -5,7 +5,10 @@
   "main": "index.js",
   "bin": {
     "trek": "./bin/trek",
-    "trek-generate": "./bin/trek-generate"
+    "trek-generate": "./bin/trek-generate",
+    "trek-new": "./bin/trek-new",
+    "trek-server": "./bin/trek-server",
+    "trek-console": "./bin/trek-console"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
