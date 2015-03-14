@@ -65,7 +65,9 @@ trekapp
 │   ├── models
 │   │   └── user.js
 │   ├── services
+│   │   └── .gitkeep
 │   └── views
+│       └── .gitkeep
 ├── config
 │   ├── application.js
 │   ├── environments
@@ -77,6 +79,7 @@ trekapp
 │   ├── passport.js
 │   ├── routes.js
 │   └── session.js
+├── esnext.js
 ├── log
 │   └── .gitkeep
 ├── package.json
