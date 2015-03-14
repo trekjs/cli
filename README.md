@@ -12,6 +12,9 @@ Command line tool for Trek's application.
 
 ```bash
 $ trek -h
+$ trek new trekapp
+$ cd trekapp
+$ npm i
 ```
 
 ```bash
