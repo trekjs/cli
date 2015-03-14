@@ -1,1 +1,179 @@
 #!/usr/bin/env node
+
+'use strict'
+
+var chalk = require('chalk')
+  , fs = require('fs-extra')
+  , path = require('path')
+  , mkdirp = require('mkdirp')
+  , readline = require('readline')
+  , swig  = require('swig')
+  , program = require('commander')
+
+// options
+
+program
+  .usage('[options] [dir]')
+  .option('-o, --orm <orm>', 'selecte an ORM. Default: '
+          + chalk.cyan('sequelize')
+          + ' (options: bookshelf/sequelize/waterline/mongoose)', 'sequelize')
+  .option('-d, --database <database>', 'selecte a database. Default: '
+          + chalk.cyan('postgresql')
+          +' (options: mongodb/mariadb/mysql/postgresql/sqlite3)', 'postgresql')
+  .option('-E, --skip-env', 'don\'t create .env .env.{development,production,test}')
+  .option('-G, --skip-git', 'don\'t create .gitignore file')
+  .option('-b, --babel', 'use ES6+ with babel')
+  .option('-f, --force', 'force on non-empty directory')
+  .parse(process.argv)
+
+// CLI
+
+before(program, 'outputHelp', function () {
+  this.allowUnknownOption();
+});
+
+program.on('--help', function () {
+  console.log('  Examples:');
+  console.log();
+  console.log(chalk.gray('    # create app'));
+  console.log(chalk.bold.blue('    $ trek new'));
+  console.log();
+  console.log(chalk.gray('    # create app, selected an orm and a dabatase'));
+  console.log(chalk.bold.blue('    $ trek new -o sequelize -d mariadb'));
+  console.log();
+  console.log();
+  process.exit();
+})
+
+process.on('exit', function() {
+  console.log();
+})
+
+main()
+
+/**
+ * Install a before function; AOP.
+ */
+
+function before(obj, method, fn) {
+  var old = obj[method];
+
+  obj[method] = function () {
+    fn.call(this);
+    old.apply(this, arguments);
+  };
+}
+
+/**
+ * Prompt for confirmation on STDOUT/STDIN
+ */
+
+function confirm(msg, callback) {
+  var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  rl.question(msg, function (input) {
+    rl.close();
+    callback(/^y|yes|ok|true$/i.test(input));
+  });
+}
+
+/**
+ * Create application at the given directory `path`.
+ *
+ * @param {String} path
+ */
+
+function createApplication(appName, appPath) {
+  var wait = 5;
+
+  // app template path
+  var APP_TEMPLATE_PATH = path.join(__dirname, '..', 'templates', 'app')
+
+  // copy files
+  copy('app');
+  copy('config');
+  copy('log');
+  copy('public');
+  copy('test');
+  copy('server.js');
+  copy('.env');
+  copy('.env.development');
+  copy('.env.production');
+  copy('.env.test');
+  copy('.babelrc');
+  copy('.editorconfig');
+  copy('.jshintrc');
+  copy('.travis.yml');
+  copy('gitignore', true);
+  copy('gitattributes', true);
+  write('package.json', { name: appName });
+
+  // copy files
+  function copy(src, dot) {
+    var dest = path.join(appPath, (dot ? '.' : '') + src);
+    src = path.join(APP_TEMPLATE_PATH, src);
+    console.log(' * %s', chalk.green(dest));
+    fs.copySync.call(null, src, dest);
+  }
+
+  // template, render and write file
+  function write(src, data) {
+    var pkgTemplate = swig.compileFile(path.join(APP_TEMPLATE_PATH, src));
+    var pkg = pkgTemplate(data || {});
+    let dest = path.join(appPath, src);
+    console.log(' * %s', chalk.green(dest));
+    fs.writeFileSync(dest, pkg)
+  }
+
+  function mkdir(dir) {
+    dir = path.join(appPath, dir);
+    return mkdirp.sync(dir);
+  }
+}
+
+/**
+ * Check if the given directory `path` is empty.
+ *
+ * @param {String} path
+ * @param {Function} fn
+ */
+
+function emptyDirectory(path, fn) {
+  fs.readdir(path, function(err, files){
+    if (err && 'ENOENT' != err.code) throw err;
+    fn(!files || !files.length);
+  });
+}
+
+/**
+ * Main program.
+ */
+
+function main() {
+
+  // Path
+  var destinationPath = program.args.shift() || '.';
+
+  // App name
+  var appName = path.basename(path.resolve(destinationPath));
+
+  // Generate application
+  emptyDirectory(destinationPath, function (empty) {
+    if (empty || program.force) {
+      createApplication(appName, destinationPath);
+    } else {
+      confirm('destination is not empty, continue? [y/N] ', function (ok) {
+        if (ok) {
+          process.stdin.destroy();
+          createApplication(appName, destinationPath);
+        } else {
+          console.error('aborting');
+          process.exit(1)
+        }
+      });
+    }
+  });
+}
