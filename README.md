@@ -11,6 +11,10 @@ Command line tool for Trek's application.
 ### Usage
 
 ```bash
+$ trek -h
+```
+
+```bash
 
   Usage: trek <command> [options]
 
