@@ -6,6 +6,7 @@
     "start": "babel-node server.js"
   },
   "dependencies": {
+    "babel": "^4.x",
     "trek": "trekjs/trek#dev"
   },
   "engines": {

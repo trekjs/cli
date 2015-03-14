@@ -1,3 +1,5 @@
+import './esnext';
+
 import Trek from 'trek';
 
 var app = new Trek(__dirname);
