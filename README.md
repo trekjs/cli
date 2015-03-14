@@ -15,6 +15,7 @@ $ trek -h
 $ trek new trekapp
 $ cd trekapp
 $ npm i
+$ npm start
 ```
 
 ```bash
