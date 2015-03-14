@@ -2,21 +2,21 @@ module.exports = [
   {
       name: 'generate'
     , alias: 'g'
-    , description: 'Generate new code'
+    , description: 'generate new code'
   },
   {
       name: 'new'
     , alias: 'n'
-    , description: 'Create a new Trek application'
+    , description: 'create a new Trek application'
   },
   {
       name: 'server'
     , alias: 's'
-    , description: 'Start the Trek server'
+    , description: 'start the Trek server'
   },
   {
       name: 'console'
     , alias: 'c'
-    , description: 'Start the Trek console'
+    , description: 'start the Trek console'
   }
 ]
