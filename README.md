@@ -1,8 +1,16 @@
 # trek-cli
 
+Command line tool for Trek's application.
+
+  [![NPM version][npm-img]][npm-url]
+  [![Build status][travis-img]][travis-url]
+  [![Test coverage][coveralls-img]][coveralls-url]
+  [![License][license-img]][license-url]
+  [![Dependency status][david-img]][david-url]
+
 ### Usage
 
-```
+```bash
 
   Usage: trek <command> [options]
 
@@ -71,3 +79,14 @@ trekapp
 ## LICENSE
 
   [MIT](LICENSE)
+
+[npm-img]: https://img.shields.io/npm/v/trek-cli.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/trek-cli
+[travis-img]: https://img.shields.io/travis/trekjs/trek-cli.svg?style=flat-square
+[travis-url]: https://travis-ci.org/trekjs/trek-cli
+[coveralls-img]: https://img.shields.io/coveralls/trekjs/trek-cli.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/trekjs/trek-cli?branch=master
+[license-img]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
+[david-img]: https://img.shields.io/david/trekjs/trek-cli.svg?style=flat-square
+[david-url]: https://david-dm.org/trekjs/trek-cli
+[license-url]: LICENSE
