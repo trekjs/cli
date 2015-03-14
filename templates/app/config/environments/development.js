@@ -1,0 +1,4 @@
+// development
+
+export defualt (config) => {
+};

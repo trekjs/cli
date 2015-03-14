@@ -1,0 +1,10 @@
+.DS_Store
+test/tmp
+
+node_modules
+npm-debug.log
+
+# Ignore .env files
+.env*
+!.env.example
+!.env.sample

@@ -1,0 +1,11 @@
+{
+  "name": "{{ name }}",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "babel-node server.js"
+  },
+  "dependencies": {
+    "trek": "~1.x"
+  }
+}

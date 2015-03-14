@@ -1,0 +1,4 @@
+// production
+
+export defualt (config) => {
+};
