@@ -1,6 +1,6 @@
 {
   "name": "trek-cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Command line tool for Trek's application",
   "main": "index.js",
   "bin": {
@@ -10,9 +10,7 @@
     "trek-server": "./bin/trek-server",
     "trek-console": "./bin/trek-console"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "preferGlobal": true,
   "repository": "trekjs/trek-cli",
   "keywords": [
     "trek.js",
@@ -28,9 +26,18 @@
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "abbrev": "^1.0.5",
-    "chalk": "^0.5.1",
-    "commander": "^2.6.0",
-    "win-fork": "^1.1.1"
-  }
+    "abbrev": "^1.x",
+    "chalk": "^1.x",
+    "commander": "^2.x",
+    "fs-extra": "^0.16.5",
+    "mkdirp": "^0.5.0",
+    "swig": "^1.4.2",
+    "win-fork": "^1.x"
+  },
+  "files": [
+    "LICENSE",
+    "bin/",
+    "lib/",
+    "templates/"
+  ]
 }
