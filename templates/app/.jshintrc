@@ -1,15 +1,16 @@
 {
-  "boss": true,
+  "bitwise": true,
+  "camelcase": true,
   "curly": true,
   "eqeqeq": true,
-  "eqnull": true,
+  "esnext": true,
   "immed": true,
+  "jquery": true,
   "latedef": true,
-  "mocha" : true,
   "newcap": true,
   "noarg": true,
-  "node": true,
-  "sub": true,
+  "quotmark": "single",
+  "strict": true,
   "undef": true,
   "unused": true
 }
