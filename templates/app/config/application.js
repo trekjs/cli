@@ -1,6 +1,6 @@
 // Application defults config
 
-export defualt (config) => {
+export default (config) => {
 
   config.set('site', {
     protocol: 'http',

@@ -1,4 +1,4 @@
 // development
 
-export defualt (config) => {
+export default (config) => {
 };
