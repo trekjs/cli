@@ -1,0 +1,11 @@
+# For more information about the configurations used
+# in this file, please see the Travis CI documentation:
+# http://docs.travis-ci.com
+
+sudo: false
+
+language: node_js
+
+node_js:
+  - 'iojs'
+  - '0.12'
