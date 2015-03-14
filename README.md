@@ -69,6 +69,7 @@ trekapp
 │   │   ├── production.js
 │   │   └── test.js
 │   ├── locales
+│   │   └── .gitkeep
 │   ├── passport.js
 │   ├── routes.js
 │   └── session.js
@@ -76,8 +77,19 @@ trekapp
 │   └── .gitkeep
 ├── package.json
 ├── public
+│   ├── fonts
+│   │   └── .gitkeep
+│   ├── humans.txt
+│   ├── images
+│   │   └── .gitkeep
+│   ├── robots.txt
+│   ├── scripts
+│   │   └── .gitkeep
+│   └── styles
+│       └── .gitkeep
 ├── server.js
 └── test
+    └── .gitkeep
 ```
 
 ## LICENSE
