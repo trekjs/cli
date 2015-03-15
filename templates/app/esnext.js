@@ -10,7 +10,9 @@ try {
 } catch(e) {}
 
 var regexp = [
+  'app',
   'lib',
+  'config',
   'test',
   'node_modules/trek/lib'
 ].map((i) => {
@@ -18,7 +20,7 @@ var regexp = [
 }).join('|');
 
 babelrc.only = new RegExp('(' + regexp + ')');
-babelrc.ignore = [ 'node_modules' ];
+babelrc.ignore = false;
 
 require('babel/register')(babelrc);
 
