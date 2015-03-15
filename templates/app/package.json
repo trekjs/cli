@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "babel": "^4.x",
-    "trek": "trekjs/trek#dev"
+    "trek": "trekjs/trek#dev",
+    "koa-load-middlewares": "^0.0.1"
   },
   "engines": {
     "iojs": "1.x.x"
