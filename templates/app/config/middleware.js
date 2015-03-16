@@ -4,8 +4,47 @@ import klm from 'koa-load-middlewares';
 export default (app) => {
   let [config, ms, isProduction] = [app.config, klm(), Trek.isProduction];
 
+  /**
+   * Installed middleware in Trek.
+   * See `trek/defaultStack.js`
+   *
+   *  - logger
+   *  - morgan
+   *  - responseTime
+   *  - xRequestId
+   *  - staticCache
+   *  - methodoverride
+   *  - qs
+   *  - bodyparser
+   *  - compress
+   *  - conditionalGet
+   *  - etag
+   *  - genericSession
+   *  - router
+   *
+   * Below middlewares, install them if you need.
+   *
+   * ```
+   *  middleware: {
+   *    name: middlewareName
+   *    handler: middlewareHandler,
+   *    options: middlewareArguments,
+   *    priority: 233,
+   *    disabled: true,
+   *    isWrapped: true
+   *  }
+   *  ```
+   *
+   *  * handler: middleware handler
+   *  * options: middleware arguments
+   *  * priority: middleware sort by priority
+   *  * disabled: true    // disabled middleware
+   *  * isWrapped: true   // likes: `local(app)`
+   */
+
   return {
 
+    /*
     favicon: {
       handler: ms.favicon,
       options: path.join(config.publicPath, 'favicon.ico'),
@@ -59,6 +98,7 @@ export default (app) => {
       name: 'router',
       //disabled: true
     }
+    */
   };
 
 };
