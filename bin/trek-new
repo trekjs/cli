@@ -99,7 +99,6 @@ function createApplication(appName, appPath) {
   copy('public');
   copy('test');
   copy('server.js');
-  copy('esnext.js');
   copy('.env');
   copy('.env.development');
   copy('.env.production');
