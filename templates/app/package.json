@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "babel-node server.js"
+    "start": "./node_modules/.bin/babel-node server.js"
   },
   "dependencies": {
     "babel": "^4.x",
-    "trek": "trekjs/trek#dev",
+    "trek": "trekjs/trek",
     "koa-load-middlewares": "^0.0.1"
   },
   "engines": {
