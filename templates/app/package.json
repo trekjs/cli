@@ -8,7 +8,7 @@
   "dependencies": {
     "babel": "^4.x",
     "trek": "trekjs/trek",
-    "koa-load-middlewares": "^0.0.1"
+    "koa-load-middlewares": "^1.x"
   },
   "engines": {
     "iojs": "1.x.x"
