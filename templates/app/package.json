@@ -10,6 +10,13 @@
     "trek": "trekjs/trek",
     "koa-load-middlewares": "^1.x"
   },
+  "devDependencies": {
+    "browser-sync": "^2.x",
+    "gulp": "^3.8",
+    "gulp-load-plugins": "^0.x",
+    "gulp-sass": "^1.x",
+    "gulp-watch": "^4.x"
+  },
   "engines": {
     "iojs": "1.x.x"
   }
