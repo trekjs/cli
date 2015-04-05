@@ -47,14 +47,58 @@ $ npm start
 
 ## Directory Structure
 
-```
-trekapp
+```bash
+treek -a trekapp
+.
 ├── .babelrc
 ├── .editorconfig
-├── .env
-├── .env.development
-├── .env.production
-├── .env.test
+├── .eslintrc
+├── .gitattributes
+├── .gitignore
+├── .travis.yml
+├── app
+│   ├── controllers
+│   │   ├── users.js
+│   │   └── welcome.js
+│   ├── models
+│   │   └── user.js
+│   ├── services
+│   │   └── .gitkeep
+│   └── views
+│       └── .gitkeep
+├── config
+│   ├── .env
+│   ├── .env.development
+│   ├── .env.production
+│   ├── .env.test
+│   ├── app.development.toml
+│   ├── app.production.toml
+│   ├── app.test.toml
+│   ├── app.toml
+│   ├── database.toml
+│   ├── locales
+│   │   └── .gitkeep
+│   ├── middleware.js
+│   └── routes.js
+├── log
+│   └── .gitkeep
+├── package.json
+├── public
+│   ├── fonts
+│   │   └── .gitkeep
+│   ├── humans.txt
+│   ├── images
+│   │   └── .gitkeep
+│   ├── robots.txt
+│   ├── scripts
+│   │   └── .gitkeep
+│   └── styles
+│       └── .gitkeep
+├── server.js
+└── test
+    └── .gitkeep
+├── .babelrc
+├── .editorconfig
 ├── .gitattributes
 ├── .gitignore
 ├── .jshintrc
@@ -69,16 +113,14 @@ trekapp
 │   └── views
 │       └── .gitkeep
 ├── config
-│   ├── application.js
-│   ├── environments
-│   │   ├── development.js
-│   │   ├── production.js
-│   │   └── test.js
+│   ├── app.toml
+│   ├── .env
+│   ├── .env.development
+│   ├── .env.production
+│   ├── .env.test
 │   ├── locales
 │   │   └── .gitkeep
-│   ├── passport.js
 │   ├── routes.js
-│   └── session.js
 ├── esnext.js
 ├── log
 │   └── .gitkeep
