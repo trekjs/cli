@@ -10,6 +10,6 @@ test/tmp
 .tmp
 
 # .env* files
-.env*
+config/.env*
 !.env.example
 !.env.sample

@@ -2,7 +2,7 @@
   "name": "trek-cli",
   "version": "0.0.12",
   "description": "Command line tool for Trek's application",
-  "author": "Fangdun Cai <cfddream@gmail.com> (https://github.com/fundon)",
+  "author": "Fangdun Cai <cfddream@gmail.com>",
   "preferGlobal": true,
   "repository": "trekjs/trek-cli",
   "bin": {
@@ -23,13 +23,12 @@
     "app-kit",
     "trek-app-kit"
   ],
-  "author": "Fangdun Cai <cfddream@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "abbrev": "^1.x",
     "chalk": "^1.x",
     "commander": "^2.x",
-    "fs-extra": "^0.16.5",
+    "fs-extra": "^0.18.0",
     "mkdirp": "^0.5.0",
     "swig": "^1.4.2",
     "win-fork": "^1.x"

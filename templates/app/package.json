@@ -2,11 +2,12 @@
   "name": "{{ name }}",
   "version": "0.0.0",
   "private": true,
+  "description": "Powered by Trek.js",
   "scripts": {
     "start": "./node_modules/.bin/babel-node server.js"
   },
   "dependencies": {
-    "babel": "^4.x",
+    "babel": "^5.x",
     "trek": "trekjs/trek",
     "koa-load-middlewares": "^1.x"
   },

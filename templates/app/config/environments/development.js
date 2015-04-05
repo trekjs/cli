@@ -1,4 +1,0 @@
-// development
-
-export default (config) => {
-};
