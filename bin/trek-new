@@ -99,13 +99,9 @@ function createApplication(appName, appPath) {
   copy('public');
   copy('test');
   copy('server.js');
-  copy('.env');
-  copy('.env.development');
-  copy('.env.production');
-  copy('.env.test');
   copy('.babelrc');
   copy('.editorconfig');
-  copy('.jshintrc');
+  copy('.eslintrc');
   copy('.travis.yml');
   copy('gitignore', true);
   copy('gitattributes', true);
