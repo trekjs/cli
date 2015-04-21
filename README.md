@@ -56,6 +56,7 @@ treek -a trekapp
 ├── .gitattributes
 ├── .gitignore
 ├── .travis.yml
+├── Dockerfile
 ├── app
 │   ├── controllers
 │   │   ├── users.js
@@ -80,48 +81,9 @@ treek -a trekapp
 │   │   └── .gitkeep
 │   ├── middleware.js
 │   └── routes.js
-├── log
-│   └── .gitkeep
-├── package.json
-├── public
-│   ├── fonts
-│   │   └── .gitkeep
-│   ├── humans.txt
-│   ├── images
-│   │   └── .gitkeep
-│   ├── robots.txt
-│   ├── scripts
-│   │   └── .gitkeep
-│   └── styles
-│       └── .gitkeep
-├── server.js
-└── test
-    └── .gitkeep
-├── .babelrc
-├── .editorconfig
-├── .gitattributes
-├── .gitignore
-├── .jshintrc
-├── .travis.yml
-├── app
-│   ├── controllers
-│   │   └── users.js
-│   ├── models
-│   │   └── user.js
-│   ├── services
-│   │   └── .gitkeep
-│   └── views
-│       └── .gitkeep
-├── config
-│   ├── app.toml
-│   ├── .env
-│   ├── .env.development
-│   ├── .env.production
-│   ├── .env.test
-│   ├── locales
-│   │   └── .gitkeep
-│   ├── routes.js
-├── esnext.js
+│   └── secrets.toml
+│   └── session.js
+├── docker-compose.yml
 ├── log
 │   └── .gitkeep
 ├── package.json

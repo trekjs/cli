@@ -105,6 +105,8 @@ function createApplication(appName, appPath) {
   copy('.travis.yml');
   copy('gitignore', true);
   copy('gitattributes', true);
+  copy('Dockerfile');
+  copy('docker-compose.yml');
   write('package.json', { name: appName });
 
   // copy files
