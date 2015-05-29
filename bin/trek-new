@@ -20,7 +20,7 @@ program
   .option('-d, --database <database>', 'selecte a database. Default: '
           + chalk.cyan('postgresql')
           +' (options: mongodb/mariadb/mysql/postgresql/sqlite3)', 'postgresql')
-  .option('-E, --skip-env', 'don\'t create .env .env.{development,production,test}')
+  .option('-E, --skip-env', 'don\'t create .env.{development,production,test}')
   .option('-G, --skip-git', 'don\'t create .gitignore file')
   .option('-b, --babel', 'use ES6+ with babel')
   .option('-f, --force', 'force on non-empty directory')
@@ -105,7 +105,6 @@ function createApplication(appName, appPath) {
   copy('.travis.yml');
   copy('gitignore', true);
   copy('gitattributes', true);
-  copy('Dockerfile');
   copy('docker-compose.yml');
   write('package.json', { name: appName });
 

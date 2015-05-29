@@ -56,7 +56,6 @@ treek -a trekapp
 ├── .gitattributes
 ├── .gitignore
 ├── .travis.yml
-├── Dockerfile
 ├── app
 │   ├── controllers
 │   │   ├── users.js
