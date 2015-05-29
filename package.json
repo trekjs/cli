@@ -1,6 +1,6 @@
 {
   "name": "trek-cli",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Command line tool for Trek's application",
   "author": "Fangdun Cai <cfddream@gmail.com>",
   "preferGlobal": true,

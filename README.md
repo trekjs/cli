@@ -68,7 +68,6 @@ treek -a trekapp
 │   └── views
 │       └── .gitkeep
 ├── config
-│   ├── .env
 │   ├── .env.development
 │   ├── .env.production
 │   ├── .env.test
