@@ -12,7 +12,7 @@ export default (app, config) => {
 
   // method-override
   const methodOverride = middlewareConfig.methodoverride
-  if (methodOverrideOptions) {
+  if (methodOverride) {
     app.use(require('koa-methodoverride')(methodOverride.getter, methodOverride.options))
   }
 
