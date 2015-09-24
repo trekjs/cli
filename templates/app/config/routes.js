@@ -1,8 +1,2 @@
 
-export default (routeMapper) => {
-
-  routeMapper
-
-    .get('/', { to: 'welcome#index' })
-
-};
+get('/', { to: 'welcome#index' })
