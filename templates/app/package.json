@@ -1,24 +1,27 @@
 {
-  "name": "{{ name }}",
+  "name": "${ name }",
   "version": "0.0.0",
   "private": true,
   "description": "Powered by Trek.js",
   "scripts": {
-    "start": "./node_modules/.bin/babel-node server.js"
+    "start": "babel-node server.js"
   },
   "dependencies": {
-    "babel": "^5.x",
+    "babel": "^5.*",
     "trek": "trekjs/trek",
-    "koa-load-middlewares": "^1.x"
+    "koa-bodyparser": "^2.*",
+    "koa-compress": "^1.*",
+    "koa-methodoverride": "^1.*",
+    "koa-redis": "^1.*",
+    "koa-generic-session": "^1.*"
   },
   "devDependencies": {
-    "browser-sync": "^2.x",
-    "gulp": "^3.8",
-    "gulp-load-plugins": "^0.x",
-    "gulp-sass": "^1.x",
-    "gulp-watch": "^4.x"
+    "browser-sync": "^2.*",
+    "gulp": "^3.*",
+    "gulp-load-plugins": "^1.*",
+    "gulp-watch": "^4.*"
   },
   "engines": {
-    "iojs": "1.x.x"
+    "node": ">= 4"
   }
 }

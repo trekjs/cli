@@ -2,12 +2,12 @@
 
 'use strict'
 
-var chalk = require('chalk')
+const chalk = require('chalk')
   , fs = require('fs-extra')
   , path = require('path')
   , mkdirp = require('mkdirp')
   , readline = require('readline')
-  , swig  = require('swig')
+  , templatly = require('templatly')
   , program = require('commander')
 
 // options
@@ -118,8 +118,8 @@ function createApplication(appName, appPath) {
 
   // template, render and write file
   function write(src, data) {
-    var pkgTemplate = swig.compileFile(path.join(APP_TEMPLATE_PATH, src));
-    var pkg = pkgTemplate(data || {});
+    var content = fs.readFileSync(path.join(APP_TEMPLATE_PATH, src))
+    var pkg = templatly(content, data || {})
     let dest = path.join(appPath, src);
     console.log(' * %s', chalk.green(dest));
     fs.writeFileSync(dest, pkg)

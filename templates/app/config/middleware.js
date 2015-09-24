@@ -1,13 +1,42 @@
-import path from 'path';
-import klm from 'koa-load-middlewares';
+/**
+ * Middleware
+ */
+export default (app, config) => {
 
-export default (app) => {
-  let [config, ms, isProduction] = [app.config, klm(), Trek.isProduction];
+  const middlewareConfig = config.get('middleware') || Object.create(null)
 
-  /*
-  middleware(app, options);
-  // or
-  app.use(middleware);
-  */
 
-};
+  // bodyparser
+  app.use(require('koa-bodyparser')(middlewareConfig.bodyparser))
+
+
+  // method-override
+  const methodOverride = middlewareConfig.methodoverride
+  if (methodOverrideOptions) {
+    app.use(require('koa-methodoverride')(methodOverride.getter, methodOverride.options))
+  }
+
+
+  // session
+  let session = {
+    key: 'trek.sid',
+    prefix: 'trek:sess:'
+  }
+  let store = middlewareConfig.session && middlewareConfig.session.store
+  Object.assign(
+    session,
+    middlewareConfig.session,
+    {
+      store: Trek.isProduction && require('koa-redis')(store)
+    }
+  )
+  app.use(require('koa-generic-session')(session))
+
+
+  // compress
+  const compress = config.get('middleware.compress')
+  if (compress) {
+    app.use(require('koa-compress')(compress))
+  }
+
+}
