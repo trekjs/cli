@@ -29,24 +29,24 @@ program
 // CLI
 
 before(program, 'outputHelp', function () {
-  this.allowUnknownOption();
-});
+  this.allowUnknownOption()
+})
 
 program.on('--help', function () {
-  console.log('  Examples:');
-  console.log();
-  console.log(chalk.gray('    # create app'));
-  console.log(chalk.bold.blue('    $ trek new'));
-  console.log();
-  console.log(chalk.gray('    # create app, selected an orm and a dabatase'));
-  console.log(chalk.bold.blue('    $ trek new -o sequelize -d mariadb'));
-  console.log();
-  console.log();
-  process.exit();
+  console.log('  Examples:')
+  console.log()
+  console.log(chalk.gray('    # create app'))
+  console.log(chalk.bold.blue('    $ trek new'))
+  console.log()
+  console.log(chalk.gray('    # create app, selected an orm and a dabatase'))
+  console.log(chalk.bold.blue('    $ trek new -o sequelize -d mariadb'))
+  console.log()
+  console.log()
+  process.exit()
 })
 
 process.on('exit', function() {
-  console.log();
+  console.log()
 })
 
 main()
@@ -56,12 +56,12 @@ main()
  */
 
 function before(obj, method, fn) {
-  var old = obj[method];
+  var old = obj[method]
 
   obj[method] = function () {
-    fn.call(this);
-    old.apply(this, arguments);
-  };
+    fn.call(this)
+    old.apply(this, arguments)
+  }
 }
 
 /**
@@ -72,12 +72,12 @@ function confirm(msg, callback) {
   var rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
-  });
+  })
 
   rl.question(msg, function (input) {
-    rl.close();
-    callback(/^y|yes|ok|true$/i.test(input));
-  });
+    rl.close()
+    callback(/^y|yes|ok|true$/i.test(input))
+  })
 }
 
 /**
@@ -87,47 +87,47 @@ function confirm(msg, callback) {
  */
 
 function createApplication(appName, appPath) {
-  var wait = 5;
+  var wait = 5
 
   // app template path
   var APP_TEMPLATE_PATH = path.join(__dirname, '..', 'templates', 'app')
 
   // copy files
-  copy('app');
-  copy('config');
-  copy('log');
-  copy('public');
-  copy('test');
-  copy('server.js');
-  copy('.babelrc');
-  copy('.editorconfig');
-  copy('.eslintrc');
-  copy('.travis.yml');
-  copy('gitignore', true);
-  copy('gitattributes', true);
-  copy('docker-compose.yml');
-  write('package.json', { name: appName });
+  copy('app')
+  copy('config')
+  copy('log')
+  copy('public')
+  copy('test')
+  copy('server.js')
+  copy('.babelrc')
+  copy('.editorconfig')
+  copy('.eslintrc')
+  copy('.travis.yml')
+  copy('gitignore', true)
+  copy('gitattributes', true)
+  copy('docker-compose.yml')
+  write('package.json', { name: appName })
 
   // copy files
   function copy(src, dot) {
-    var dest = path.join(appPath, (dot ? '.' : '') + src);
-    src = path.join(APP_TEMPLATE_PATH, src);
-    console.log(' * %s', chalk.green(dest));
-    fs.copySync.call(null, src, dest);
+    var dest = path.join(appPath, (dot ? '.' : '') + src)
+    src = path.join(APP_TEMPLATE_PATH, src)
+    console.log(' * %s', chalk.green(dest))
+    fs.copySync.call(null, src, dest)
   }
 
   // template, render and write file
   function write(src, data) {
     var content = fs.readFileSync(path.join(APP_TEMPLATE_PATH, src))
     var pkg = templatly(content, data || {})
-    let dest = path.join(appPath, src);
-    console.log(' * %s', chalk.green(dest));
+    let dest = path.join(appPath, src)
+    console.log(' * %s', chalk.green(dest))
     fs.writeFileSync(dest, pkg)
   }
 
   function mkdir(dir) {
-    dir = path.join(appPath, dir);
-    return mkdirp.sync(dir);
+    dir = path.join(appPath, dir)
+    return mkdirp.sync(dir)
   }
 }
 
@@ -140,9 +140,9 @@ function createApplication(appName, appPath) {
 
 function emptyDirectory(path, fn) {
   fs.readdir(path, function(err, files){
-    if (err && 'ENOENT' != err.code) throw err;
-    fn(!files || !files.length);
-  });
+    if (err && 'ENOENT' != err.code) throw err
+    fn(!files || !files.length)
+  })
 }
 
 /**
@@ -152,25 +152,25 @@ function emptyDirectory(path, fn) {
 function main() {
 
   // Path
-  var destinationPath = program.args.shift() || '.';
+  var destinationPath = program.args.shift() || '.'
 
   // App name
-  var appName = path.basename(path.resolve(destinationPath));
+  var appName = path.basename(path.resolve(destinationPath))
 
   // Generate application
   emptyDirectory(destinationPath, function (empty) {
     if (empty || program.force) {
-      createApplication(appName, destinationPath);
+      createApplication(appName, destinationPath)
     } else {
       confirm('destination is not empty, continue? [y/N] ', function (ok) {
         if (ok) {
-          process.stdin.destroy();
-          createApplication(appName, destinationPath);
+          process.stdin.destroy()
+          createApplication(appName, destinationPath)
         } else {
-          console.error('aborting');
+          console.error('aborting')
           process.exit(1)
         }
-      });
+      })
     }
-  });
+  })
 }
