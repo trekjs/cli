@@ -107,6 +107,7 @@ function createApplication(appName, appPath) {
   copy('gitattributes', true)
   copy('docker-compose.yml')
   write('package.json', { name: appName })
+  write('README.md', { name: appName })
 
   // copy files
   function copy(src, dot) {
