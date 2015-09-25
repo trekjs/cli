@@ -11,6 +11,7 @@
     "trek": "trekjs/trek",
     "koa-bodyparser": "^2.*",
     "koa-compress": "^1.*",
+    "koa-logger": "^1.*",
     "koa-methodoverride": "^1.*",
     "koa-redis": "^1.*",
     "koa-generic-session": "^1.*"
