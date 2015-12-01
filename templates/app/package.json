@@ -7,20 +7,26 @@
     "start": "babel-node server.js"
   },
   "dependencies": {
-    "babel": "^5.*",
+    "babel-core": "6",
     "trek": "trekjs/trek",
-    "koa-bodyparser": "^2.*",
-    "koa-compress": "^1.*",
-    "koa-logger": "^1.*",
-    "koa-methodoverride": "^1.*",
-    "koa-redis": "^1.*",
-    "koa-generic-session": "^1.*"
+    "trek-cli": "trekjs/cli",
+    "koa-bodyparser": "^3.x",
+    "koa-compress": "^1.x",
+    "koa-methodoverride": "^2.x",
+    "koa-morgan": "^1.x",
+    "koa-redis": "^1.x",
+    "koa-generic-session": "^1.x"
   },
   "devDependencies": {
-    "browser-sync": "^2.*",
-    "gulp": "^3.*",
+    "babel-cli": "6",
+    "babel-eslint": "^4.1.6",
+    "browser-sync": "^2.x",
+    "eslint": "^1.x",
+    "eslint-plugin-babel": "^3.x",
+    "gulp": "^3.x",
     "gulp-load-plugins": "latest",
-    "gulp-watch": "^4.*"
+    "gulp-watch": "^4.x",
+    "mocha": "^2.x"
   },
   "engines": {
     "node": ">= 4"
