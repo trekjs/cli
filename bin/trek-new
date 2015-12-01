@@ -23,6 +23,7 @@ program
   .option('-E, --skip-env', 'don\'t create .env.{development,production,test}')
   .option('-G, --skip-git', 'don\'t create .gitignore file')
   .option('-b, --babel', 'use ES6+ with babel')
+  .option('-l, --lint', 'use linter for project', 'eslint')
   .option('-f, --force', 'force on non-empty directory')
   .parse(process.argv)
 
