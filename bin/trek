@@ -3,40 +3,38 @@
 'use strict'
 
 const path = require('path')
-  , spawn = require('win-fork')
-  , fs = require('fs')
-  , join = path.join
-  , resolve = path.resolve
-  , stat = fs.statSync
-  , exists = fs.existsSync
-  , abbrev = require('abbrev')
-  , program = require('commander')
-  , chalk = require('chalk')
-  , utils = require('../lib/utils')
-  , pad = utils.pad
-  , deref = utils.deref
-  , pkg = require(path.join(__dirname, '../package'))
+const spawn = require('win-fork')
+const fs = require('fs')
+const join = path.join
+const resolve = path.resolve
+const stat = fs.statSync
+const exists = fs.existsSync
+const abbrev = require('abbrev')
+const program = require('commander')
+const chalk = require('chalk')
+const utils = require('../lib/utils')
+const pad = utils.pad
+const deref = utils.deref
 
-  , title = process.title = 'trek'
-  , cmdList = require('./commands')
-  , aliasNames = cmdList
-      .filter(function (c) { return !!c.alias })
-      .map(function (c) { return c.alias })
-  , fullList = cmdList
-      .map(function (c) { return c.name })
-      .concat(aliasNames)
-  , abbrevs = abbrev(fullList)
+const pkg = require(path.join(__dirname, '../package'))
+const title = process.title = 'trek'
+const cmdList = require('./commands')
+const aliasNames = cmdList.filter((c) => !!c.alias).map((c) => c.alias)
+const fullList = cmdList.map((c) => c.name).concat(aliasNames)
+const abbrevs = abbrev(fullList)
 
 program
   .version(pkg.version)
   .description(chalk.green(pkg.description))
   .usage('<command> [options]')
 
-program.on('--help', function () {
+program.on('--help', () => {
   console.log('  Commands:')
   console.log()
-  cmdList.forEach(function (c) {
-    console.log(chalk.bold.blue('    ' + pad(c.name, 24)) + (c.description || ''))
+  cmdList.forEach((c) => {
+    const alias = c.alias ? `|${chalk.bold.blue(c.alias)}` : ''
+    const name = `${chalk.blue(c.name)}${alias}`
+    console.log('    ' + pad(name, 44) + (c.description || ''))
   })
   console.log()
   // http://the.sunnyspot.org/asciiart/gallery/startrek.html
@@ -77,7 +75,7 @@ if (exists(local)) {
 } else {
   bin = process.env.PATH
     .split(path.delimiter)
-    .reduce(function (binary, p)  {
+    .reduce((binary, p) => {
       p = resolve(p, bin)
       return exists(p) && stat(p).isFile() ? p : binary
     }, bin)
@@ -94,6 +92,6 @@ if (!exists(bin)) {
 
 var proc = spawn(bin, args, { stdio: 'inherit', customFds: [0, 1, 2] })
 
-proc.on('close', function (code) {
+proc.on('close', (code) => {
   process.exit(code)
 })
