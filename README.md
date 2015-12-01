@@ -31,10 +31,10 @@ $ npm start
 
   Commands:
 
-    generate                generate new code
-    new                     create a new Trek application
-    server                  start the Trek server
-    console                 start the Trek console
+    generate|g     generate new code
+    new|n          create a new Trek application
+    server|s       start the Trek server
+    console|c      start the Trek console
 
             _____ ____    _____ _ ___
            /____//__  \  /____//_X__/
@@ -42,6 +42,7 @@ $ npm start
            / /  /   _/ / __/ / _ \
           / /  / /\ \ / /__ / / \ \
          /_/  /_/ /_//____//_/   \_\
+
 
 ```
 
