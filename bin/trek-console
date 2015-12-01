@@ -46,7 +46,8 @@ function main() {
 
   let Trek
   try {
-    Trek = require('trek')
+    let d = require('trek')
+    Trek = d.default || d
   } catch (e) {
     const msg = `you need install the ${chalk.yellow('trek')} module.`
     throw new Error(msg)
