@@ -34,7 +34,7 @@ $ npm start
     generate|g     generate new code
     new|n          create a new Trek application
     server|s       start the Trek server
-    console|c      start the Trek console
+    console|c      start the Trek console(REPL)
 
             _____ ____    _____ _ ___
            /____//__  \  /____//_X__/

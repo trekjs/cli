@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = [
   {
       name: 'generate'
@@ -17,6 +19,6 @@ module.exports = [
   {
       name: 'console'
     , alias: 'c'
-    , description: 'start the Trek console'
+    , description: 'start the Trek console(REPL)'
   }
 ]
