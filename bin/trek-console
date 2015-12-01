@@ -1,0 +1,76 @@
+#!/usr/bin/env node
+
+'use strict'
+
+const chalk = require('chalk')
+const fs = require('fs')
+const repl = require('repl')
+const program = require('commander')
+
+// options
+
+program
+  .usage('')
+  .parse(process.argv)
+
+// CLI
+
+before(program, 'outputHelp', () => {
+  program.allowUnknownOption()
+})
+
+process.on('exit', () => {
+  console.log()
+})
+
+main()
+
+/**
+ * Install a before function; AOP.
+ */
+
+function before(obj, method, fn) {
+  var old = obj[method]
+
+  obj[method] = function () {
+    fn.call(this)
+    old.apply(this, arguments)
+  }
+}
+
+/**
+ * Main program.
+ */
+
+function main() {
+
+  let Trek
+  try {
+    Trek = require('trek')
+  } catch (e) {
+    const msg = `you need install the ${chalk.yellow('trek')} module.`
+    throw new Error(msg)
+  }
+
+  const input = Trek.env === 'test'
+    ? fs.createWriteStream('/dev/null')
+    : process.stdin
+
+  const output = Trek.env === 'test'
+    ? fs.createReadStream('/dev/null')
+    : process.stdout
+
+  const useColors = true
+  const prompt = `${chalk.yellow('Trek')}~${chalk.black(Trek.version)} > `
+
+  const r = repl.start({
+    prompt,
+    useColors,
+    input,
+    output
+  })
+
+  r.context.Trek = Trek
+
+  return r
+}
