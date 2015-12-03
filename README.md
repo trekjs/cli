@@ -108,11 +108,11 @@ treek -a trekapp
 
 [npm-img]: https://img.shields.io/npm/v/trek-cli.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/trek-cli
-[travis-img]: https://img.shields.io/travis/trekjs/trek-cli.svg?style=flat-square
-[travis-url]: https://travis-ci.org/trekjs/trek-cli
-[coveralls-img]: https://img.shields.io/coveralls/trekjs/trek-cli.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/r/trekjs/trek-cli?branch=master
+[travis-img]: https://img.shields.io/travis/trekjs/cli.svg?style=flat-square
+[travis-url]: https://travis-ci.org/trekjs/cli
+[coveralls-img]: https://img.shields.io/coveralls/trekjs/cli.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/trekjs/cli?branch=master
 [license-img]: https://img.shields.io/badge/license-MIT-green.svg?style=flat-square
-[david-img]: https://img.shields.io/david/trekjs/trek-cli.svg?style=flat-square
-[david-url]: https://david-dm.org/trekjs/trek-cli
+[david-img]: https://img.shields.io/david/trekjs/cli.svg?style=flat-square
+[david-url]: https://david-dm.org/trekjs/cli
 [license-url]: LICENSE
