@@ -28,7 +28,7 @@
     "abbrev": "1",
     "chalk": "1",
     "commander": "2",
-    "fs-extra": "0",
+    "fs-extra": "0.30.0",
     "mkdirp": "0",
     "templatly": "0",
     "win-fork": "1"
