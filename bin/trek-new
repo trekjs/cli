@@ -100,7 +100,6 @@ function createApplication(appName, appPath) {
   copy('public')
   copy('test')
   copy('server.js')
-  copy('.babelrc')
   copy('.editorconfig')
   copy('.eslintrc')
   copy('.travis.yml')
